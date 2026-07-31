@@ -1,0 +1,235 @@
+/* ============================================================
+   The Steerability Challenge — styles.css
+   ------------------------------------------------------------
+   1. THEME — colors, fonts, page measure (--measure), and the
+      box "lift" (the hard offset shadow) live in :root.
+   2. THE SYSTEM — personality comes from four repeating moves:
+      the accent square (headings, dates, status), the hard
+      square-shadow box (.box / .btn / pre), the invert-on-hover
+      link, and one italic accent word in the title. Reuse
+      those; resist adding new ornament.
+   3. BOXES — wrap anything in class="box" to get the bordered,
+      hard-shadow card. Square corners, no blur, by design.
+============================================================= */
+
+/* ================= THEME ================= */
+:root{
+  --bg:     #FFFFFF;
+  --ink:    #17181C;    /* text, borders, shadows      */
+  --soft:   #5A5C66;    /* secondary text              */
+  --line:   #E4E4E8;    /* hairlines                   */
+  --tint:   #FAFAF8;    /* code background             */
+  --accent: #1F3BD3;    /* links, squares, the CTA     */
+  --accent-press: #16309F;
+
+  --font-serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-mono:  "Spline Sans Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --measure: 70rem;     /* column width                */
+  --lift: 5px;          /* hard-shadow offset for .box */
+}
+
+/* ================= BASE ================= */
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-serif);
+  font-size:1.125rem;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+.container{ max-width:var(--measure); margin-inline:auto; padding-inline:1.25rem; }
+
+/* Links invert on hover — the page's one micro-interaction */
+a{
+  color:var(--accent);
+  text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:1px;
+  padding:0 .12em; margin:0 -.12em;
+}
+a:hover{ background:var(--accent); color:#fff; text-decoration:none; }
+:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+::selection{ background:var(--accent); color:#fff; }
+
+h1{
+  font-size:clamp(2.1rem, 5.5vw, 2.9rem);
+  font-weight:500; line-height:1.15; letter-spacing:-0.015em;
+  margin:0 0 1.1rem;
+}
+h1 em{ font-style:italic; color:var(--accent); }
+
+/* Section headings carry a small accent square — no eyebrows */
+h2{ font-size:1.25rem; font-weight:600; line-height:1.35; margin:3.25rem 0 .8rem; }
+h2::before{
+  content:""; display:inline-block;
+  width:.5em; height:.5em; background:var(--accent);
+  margin-right:.6rem;
+}
+p{ margin:0 0 1.1rem; }
+.soft{ color:var(--soft); }
+
+/* ================= BOXES (square, hard shadow) ================= */
+.box{
+  background:#fff;
+  border:1px solid var(--ink);
+  box-shadow:var(--lift) var(--lift) 0 var(--ink);
+  padding:1.1rem 1.25rem;
+  margin:1.75rem var(--lift) 2rem 0;  /* right margin makes room for the shadow */
+}
+
+.btn{
+  display:inline-block;
+  font-family:var(--font-serif); font-size:1rem; font-weight:600; line-height:1.5;
+  background:var(--accent); color:#fff;
+  border:1px solid var(--ink);
+  box-shadow:4px 4px 0 var(--ink);
+  padding:.55em 1.05em;
+  text-decoration:none; margin:0;
+  cursor:pointer;
+  transition:transform .08s ease, box-shadow .08s ease;
+}
+.btn:hover{ background:var(--accent-press); color:#fff; transform:translate(2px,2px); box-shadow:2px 2px 0 var(--ink); }
+.btn:active{ transform:translate(4px,4px); box-shadow:none; }
+
+.btn-disabled{
+  background:var(--soft); cursor:default;
+  pointer-events:auto;       /* keep hover for tooltip */
+}
+.btn-disabled:hover{ background:var(--soft); transform:translate(2px,2px); box-shadow:2px 2px 0 var(--ink); }
+.btn-disabled:active{ transform:translate(4px,4px); box-shadow:none; }
+
+.link-disabled{
+  color:var(--soft); text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:1px;
+  cursor:default;
+}
+
+/* Tooltip */
+[data-tooltip]{
+  position:relative;
+}
+[data-tooltip]::after{
+  content:attr(data-tooltip);
+  position:absolute; bottom:calc(100% + .5rem); left:50%; transform:translateX(-50%);
+  font-family:var(--font-mono); font-size:.75rem; font-weight:400; line-height:1.4;
+  white-space:nowrap;
+  color:#fff; background:var(--ink);
+  padding:.35em .65em;
+  pointer-events:none;
+  opacity:0; transition:opacity .15s ease;
+}
+[data-tooltip]:hover::after{
+  opacity:1;
+}
+.cta-row{ display:flex; flex-wrap:wrap; align-items:center; gap:1.1rem; margin:1.6rem 0 2.1rem; }
+
+/* ================= CODE ================= */
+code{
+  font-family:var(--font-mono); font-size:.82em;
+  background:var(--tint); border:1px solid var(--line);
+  padding:.08em .35em;
+}
+pre{
+  font-family:var(--font-mono); font-size:.84rem; line-height:1.65;
+  color:#33353C; background:var(--tint);
+  border:1px solid var(--ink);
+  box-shadow:var(--lift) var(--lift) 0 var(--ink);
+  padding:1rem 1.15rem; margin:1.5rem var(--lift) 1.75rem 0;
+  overflow-x:auto;
+}
+pre code{ background:none; border:0; padding:0; font-size:inherit; }
+pre .c{ color:#8A8C96; font-style:italic; }
+
+/* ================= HEADER ================= */
+.site-header{ padding:2.25rem 0 3rem; }
+.site-header .container{ display:flex; align-items:center; justify-content:space-between; }
+.site-logo{ display:flex; padding:0; margin:0; text-decoration:none; }
+.site-logo:hover{ background:none; }
+.site-logo img{ display:block; }
+.site-nav{ display:flex; flex-wrap:wrap; gap:1.4rem; font-size:.95rem; }
+.site-nav a{ color:var(--soft); text-decoration:none; }
+.site-nav a:hover{ background:var(--ink); color:#fff; }
+
+/* ================= AT A GLANCE ================= */
+.glance{ padding:.35rem 1.25rem; }
+.glance dl{ margin:0; }
+.glance div{
+  display:flex; flex-wrap:wrap; justify-content:space-between; gap:.25rem 1.5rem;
+  padding:.6rem 0; border-top:1px solid var(--line);
+}
+.glance div:first-child{ border-top:0; }
+.glance dt{ font-family:var(--font-mono); font-size:.78rem; color:var(--soft); padding-top:.25rem; }
+.glance dd{ margin:0; font-weight:500; }
+
+/* Small status square: filled = live, hollow = upcoming */
+.sq{
+  display:inline-block; width:.5em; height:.5em;
+  background:var(--accent); margin-right:.45em;
+}
+.sq.hollow{ background:transparent; border:1.5px solid var(--ink); }
+
+/* ================= DATES ================= */
+.dates{ list-style:none; margin:0 0 1.1rem; padding:0; }
+.dates li{ display:flex; flex-wrap:wrap; gap:.35rem 1.1rem; padding:.5rem 0; }
+.dates li::before{
+  content:""; flex:0 0 auto;
+  width:.55em; height:.55em; margin-top:.62em;
+  border:1.5px solid var(--ink);      /* hollow = upcoming */
+}
+.dates li.done::before{ background:var(--accent); border-color:var(--accent); }  /* filled = passed */
+.dates .date{
+  font-family:var(--font-mono); font-size:.8rem; letter-spacing:.02em;
+  color:var(--soft); flex:0 0 8rem; padding-top:.24rem;
+}
+
+/* ================= RULES ================= */
+.rules{ list-style:none; margin:0 0 1.1rem; padding:0; counter-reset:rule; }
+.rules li{ counter-increment:rule; display:flex; gap:.9rem; margin-bottom:.6rem; }
+.rules li::before{
+  content:counter(rule, decimal-leading-zero);
+  font-family:var(--font-mono); font-size:.78rem; color:var(--soft);
+  flex:0 0 1.6rem; padding-top:.28rem;
+}
+
+/* ================= Q&A ================= */
+.qa dt{ font-weight:600; margin-top:1.5rem; }
+.qa dd{ margin:.35rem 0 0; color:var(--soft); }
+
+/* ================= SIGNUP ================= */
+.signup p{ margin-bottom:.9rem; }
+.signup form{ display:flex; flex-wrap:wrap; gap:.8rem; }
+.signup input[type="email"]{
+  flex:1 1 16rem; min-width:0;
+  font-family:var(--font-mono); font-size:.9rem;
+  color:var(--ink); background:#fff;
+  border:1px solid var(--ink);
+  padding:.6em .75em;
+}
+.signup input[type="email"]::placeholder{ color:var(--soft); }
+
+/* ================= PEOPLE ================= */
+.people{ list-style:none; margin:0 0 1.1rem; padding:0; columns:1 30rem; column-gap:.75rem; }
+.people li{ break-inside:avoid; padding:.05rem 0; }
+.people .soft{ font-size:.95rem; }
+
+/* ================= FOOTER ================= */
+.site-footer{
+  margin-top:4.5rem; border-top:1px solid var(--ink);
+  padding:1.5rem 0 3rem; font-size:.85rem; color:var(--soft);
+}
+.site-footer .container{ display:flex; flex-wrap:wrap; gap:.5rem 1.5rem; justify-content:space-between; }
+.site-footer a{ color:var(--soft); }
+.site-footer a:hover{ background:var(--ink); color:#fff; }
+
+/* ================= UTILITIES ================= */
+.visually-hidden{
+  position:absolute; width:1px; height:1px; margin:-1px; padding:0; border:0;
+  clip:rect(0 0 0 0); clip-path:inset(50%); overflow:hidden; white-space:nowrap;
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *,*::before,*::after{ transition:none !important; }
+}

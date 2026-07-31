@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Steerability Challenge</title>
+<meta name="description" content="An open competition in steering large language models to reduce model sycophancy while preserving general capability. Opens August 15, 2026.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<!-- MailerLite Universal -->
+<script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '2548322');
+</script>
+<!-- End MailerLite Universal -->
+
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header">
+  <div class="container">
+    <a href="https://ibm.github.io/AISteer360/" class="site-logo" aria-label="Home">
+      <img src="lm_logo.svg" alt="The Steerability Challenge" width="40" height="40">
+    </a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="#enter">How to enter</a>
+      <a href="#rules">Rules</a>
+      <a href="#questions">Questions</a>
+      <a href="#updates">Updates</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- ================= INTRO ================= -->
+  <h1>The Steerability Challenge</h1>
+  <br />
+  <p><em>The steerability challenge</em> is an open competition in steering large language models toward a specific target behavior while minimizing off-target effects. Specifically, the focus is to reduce model <em><a href="https://arxiv.org/abs/2411.15287">sycophancy</a></em> while maintaining the model's general capabilities. Competition entries take the form of steering interventions, which in general can be any combination of control over the model's input/prompt, structure/weights, state/activations, and output/decoding procedure. Participants will build and evaluate their interventions with the <a href="https://ibm.github.io/AISteer360/">steerability toolkit</a>.</p>
+
+  <div class="cta-row">
+    <span class="btn btn-disabled" data-tooltip="Check back at launch!">Register</span>
+    <span class="link-disabled" data-tooltip="Check back at launch!">starter pack</span>
+  </div>
+
+  <div class="box glance">
+    <dl>
+      <div><dt>open</dt><dd>Aug 15, 2026</dd></div>
+      <div><dt>close</dt><dd>Nov 15, 2026 AoE</dd></div>
+      <div><dt>platform</dt><dd>Steerability + CodaBench</dd></div>
+      <div><dt>format</dt><dd>steering policy (<code>.spipe</code> file)</dd></div>
+      <div><dt>awards</dt><dd>cash prizes</dd></div>
+    </dl>
+  </div>
+
+  <!-- ================= TASK ================= -->
+  <h2 id="task">The task</h2>
+  <p>Sycophancy, i.e., a model's tendency to align with what the user appears to want to hear rather than with what is accurate, persists even in state-of-the-art models. Steering a model to be less sycophantic is challenging due to its tight coupling with other (desirable) behavioral traits. The task of the competition is to design a <em>steering policy</em> (an ordered composition of steering interventions) to maximally suppress a model's sycophantic behavior while maintaining its general capabilities. Visual interfaces (which we term <em>workbenches</em>) to assist in the construction of steering policies will be made available to participants in an effort to lower the barrier of entry.</p>
+
+  <p>Submissions will be scored based on a composite score of sycophancy reduction relative to the unsteered model minus the mean regression across side-effects (as measured by general capability benchmarks). Only regressions are penalized; incidental capability gains are permitted but will not be rewarded. The specific measures of sycophancy and general capabilities will be kept private to prevent gaming. Additionally, the splits used to maintain the leaderboard throughout the competition will be an intentionally small portion of the final evaluation split.</p>
+
+  <p>Upon competition launch, a collection of baseline steering pipelines will be provided. A starter kit to help participants get started will also be made available. Winning teams will be awarded with a cash prize and will be invited to present at the competition workshop at NeurIPS 2026. Select teams will also be given the opportunity for their policies to be incorporated into the toolkit as community-contributed examples for sycophancy reduction.</p>
+
+  <!-- ================= RULES ================= -->
+  <h2 id="rules">Rules</h2>
+  <ol class="rules">
+    <li>One account per person (verified via institutional email if available + ORCID ID); individuals or teams of up to five. Teams may merge until the merger deadline of Sept. 15, after which the combined team inherits a single quota.</li>
+    <li>Each team is limited to five scored submissions in any rolling 24-hour window.</li>
+    <li>Each team designates exactly one entry for final evaluation.</li>
+    <li>All steering policies must be submitted in the toolkit's standardized <code>.spipe</code> format to enable uniform evaluation.</li>
+    <li>External datasets and pretrained artifacts (steering vectors, adapters) are welcome if freely accessible to all and documented. Fine-tuning data must be public or participant-created (with provenance disclosed on request).</li>
+    <li>Prizes require some component of originality, i.e., novel steering strategies or substantive methodological improvements over the provided baselines.</li>
+    <li>Prize recipients supply full reproduction materials within 14 days, present at the competition workshop, and license their submission under Apache 2.0.</li>
+  </ol>
+
+  <!-- ================= QUESTIONS ================= -->
+  <h2 id="questions">Questions</h2>
+  <dl class="qa">
+    <dt>Who can participate?</dt>
+    <dd>We welcome participation from students, researchers, industry teams, hobbyists. There is no institutional
+or geographic restrictions beyond standard US export-control requirements.</dd>
+
+    <dt>Is there an entry fee?</dt>
+    <dd>No, entry is free-of-charge.</dd>
+
+    <dt>Which model will I be steering?</dt>
+    <dd>Given that we are scoring the performance of the steering policy, rather than the performance of a steered model, we will be running steering on a small set of models announced at competition launch.</dd>
+
+    <dt>Do I need to know how to program?</dt>
+    <dd>No, visual interfaces (workbenches) will be made available to facilitate easier construction of steering policies.</dd>
+
+    <dt>How is the leaderboard kept honest?</dt>
+    <dd>The public leaderboard runs on a downsampled subset of the evaluation; final rankings use the full private suite, including held-out steering tasks. Winners are re-run end to end and code-reviewed.</dd>
+
+    <dt>What happens to submissions afterwards?</dt>
+    <dd>Submissions are Apache 2.0. We strongly encourage public release, and the full evaluation suite will be published post-competition for reproducibility.</dd>
+  </dl>
+
+  <!-- ================= UPDATES (SIGNUP) ================= -->
+  <h2 id="updates">Updates</h2>
+  <div class="box signup">
+    <p>Sign up to our (low-volume) mailing list to learn more about the launch, office hours, the midpoint checkpoint, and results.</p>
+    <form id="signup-form"
+          action="https://assets.mailerlite.com/jsonp/2548322/forms/194532335145715204/subscribe"
+          method="post">
+      <label class="visually-hidden" for="signup-email">Email address</label>
+      <input id="signup-email" name="fields[email]" type="email" required placeholder="you@example.org" autocomplete="email">
+      <input type="hidden" name="ml-submit" value="1">
+      <input type="hidden" name="anticsrf" value="true">
+      <button class="btn" type="submit">Sign up</button>
+    </form>
+    <p id="signup-success" style="display:none;margin-top:.8rem;margin-bottom:0;" class="soft" aria-live="polite">Thanks! You're on the list.</p>
+    <p id="signup-error" style="display:none;margin-top:.8rem;margin-bottom:0;" aria-live="polite">Sign-up didn't go through — please try again.</p>
+  </div>
+
+  <script>
+  (function() {
+    var form = document.getElementById('signup-form');
+    var button = form.querySelector('button[type="submit"]');
+    var successMsg = document.getElementById('signup-success');
+    var errorMsg = document.getElementById('signup-error');
+
+    form.addEventListener('submit', function(e) {
+      // Post to MailerLite ourselves so we can react to its real response
+      // instead of assuming success.
+      e.preventDefault();
+      button.disabled = true;
+      errorMsg.style.display = 'none';
+
+      fetch(form.action, { method: 'POST', body: new FormData(form) })
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          if (data && data.success) {
+            form.style.display = 'none';
+            successMsg.style.display = 'block';
+          } else {
+            throw data;
+          }
+        })
+        .catch(function(err) {
+          // Surface MailerLite's field-level message when it sends one.
+          var fields = err && err.errors && err.errors.fields;
+          var msg = fields && fields.email && fields.email[0];
+          errorMsg.textContent = msg || "Sign-up didn't go through — please try again.";
+          errorMsg.style.display = 'block';
+          button.disabled = false;
+          console.error('MailerLite signup failed:', err);
+        });
+    });
+  })();
+  </script>
+
+  <!-- ================= ORGANIZERS ================= -->
+  <h2 id="organizers">Organizers</h2>
+  <ul class="people">
+    <li>Erik Miehling <span class="soft">· IBM Research</span></li>
+    <li>Ching-Yun Ko <span class="soft">· IBM Research</span></li>
+    <li>Matthew Riemer <span class="soft">· IBM Research / Mila</span></li>
+    <li>Maria Chang <span class="soft">· IBM Research</span></li>
+    <li>Pierre Dognin <span class="soft">· IBM Research</span></li>
+    <li>Inge Vejsbjerg <span class="soft">· IBM Research</span></li>
+    <li>Moninder Singh <span class="soft">· IBM Research</span></li>
+    <li>Dennis Wei <span class="soft">· IBM Research</span></li>
+    <li>Karthikeyan N. Ramamurthy <span class="soft">· IBM Research</span></li>
+    <li>Pin-Yu Chen <span class="soft">· IBM Research</span></li>
+    <li>Bharadwaj Ravichandran <span class="soft">· Kitware</span></li>
+    <li>Arslan Basharat <span class="soft">· Kitware</span></li>
+    <li>David Chan <span class="soft">· UC Berkeley</span></li>
+    <li>Chen Xiong <span class="soft">· The Chinese University of Hong Kong</span></li>
+    <li>Zhiyuan He <span class="soft">· The Chinese University of Hong Kong</span></li>
+    <li>Tsung-Yi Ho <span class="soft">· The Chinese University of Hong Kong</span></li>
+    <li>Tommaso Tosato <span class="soft">· Mila, University of Montreal</span></li>
+    <li>Michael Clark <span class="soft">· Woodside Energy</span></li>
+  </ul>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="container">
+    <span>© 2026 The Steerability Challenge organizers.</span>
+    <span><a href="https://ibm.github.io/AISteer360/">Docs</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
