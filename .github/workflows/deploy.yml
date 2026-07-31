@@ -32,9 +32,7 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
-          cache-dependency-path: |
-            lab/pnpm-lock.yaml
-            competition/pnpm-lock.yaml
+          cache-dependency-path: lab/pnpm-lock.yaml
 
       - name: Build lab site
         working-directory: lab
@@ -42,18 +40,12 @@ jobs:
           pnpm install --frozen-lockfile
           pnpm build
 
-      - name: Build competition site
-        working-directory: competition
-        run: |
-          pnpm install --frozen-lockfile
-          pnpm build
-
       - name: Assemble site
         run: |
-          mkdir -p _site
+          mkdir -p _site/competition
           cp -r landing/. _site/
           cp -r lab/dist _site/lab
-          cp -r competition/dist _site/competition
+          cp -r competition/. _site/competition/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
