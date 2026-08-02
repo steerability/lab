@@ -65,6 +65,9 @@
 				--color-accent: oklch(70.91% 0.1415 163.7);
 				--color-accent-2: oklch(94.66% 0 0);
 			}
+			:root {
+				--lift: 5px; /* hard-shadow offset, echoes the competition site's .box */
+			}
 
 			* {
 				box-sizing: border-box;
@@ -117,6 +120,15 @@
 				height: 3.5rem;
 				width: auto;
 			}
+			.logo-dark {
+				display: none;
+			}
+			html[data-theme="dark"] .logo-dark {
+				display: block;
+			}
+			html[data-theme="dark"] .logo-light {
+				display: none;
+			}
 			.toolkit .links {
 				color: var(--color-muted);
 			}
@@ -135,42 +147,46 @@
 				font-weight: 600;
 			}
 
-			/* Events timeline: dashed rail echoing the theme's dashed rules. */
+			/* Events timeline: stacked hard-shadow boxes, echoing the competition site's .box. */
 			ol.timeline {
 				list-style: none;
 				margin: 0;
-				padding: 0 0 0 1.5rem;
-				border-inline-start: 1px dashed var(--color-muted);
+				padding: 0;
 			}
 			ol.timeline li {
 				position: relative;
-				padding-bottom: 2.5rem;
+				background: var(--color-global-bg);
+				border: 1px solid var(--color-global-text);
+				box-shadow: var(--lift) var(--lift) 0 var(--color-global-text);
+				padding: 1.1rem 1.25rem;
+				margin: 0 var(--lift) 1.75rem 0;
 			}
 			ol.timeline li:last-child {
-				padding-bottom: 0.25rem;
-			}
-			ol.timeline .marker {
-				position: absolute;
-				top: 0.3rem;
-				inset-inline-start: calc(-1.5rem - 4.5px);
-				width: 8px;
-				height: 8px;
-				background: var(--color-accent);
-				outline: 3px solid var(--color-global-bg);
-			}
-			ol.timeline li.upcoming .marker {
-				background: var(--color-global-bg);
-				border: 1.5px solid var(--color-accent);
+				margin-bottom: 0;
 			}
 			.when {
 				color: var(--color-muted);
 			}
 			.kind {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.45em;
+				margin-bottom: 0.5rem;
 				color: var(--color-accent);
 				font-weight: 600;
 				text-transform: uppercase;
 				letter-spacing: 0.05em;
 				font-size: 0.75rem;
+			}
+			.kind::before {
+				content: "";
+				width: 0.5em;
+				height: 0.5em;
+				background: var(--color-accent);
+			}
+			ol.timeline li.upcoming .kind::before {
+				background: var(--color-global-bg);
+				border: 1.5px solid var(--color-accent);
 			}
 			.what {
 				margin: 0.25rem 0;
@@ -191,7 +207,8 @@
 	<body>
 		<main id="main">
 			<div class="toolkit">
-				<img src="/darkmode_ais.svg" alt="AI Steerability 360 logo" />
+				<img src="/logo-dark.svg" alt="AI Steerability 360 logo" class="logo-dark" />
+				<img src="/logo-light.svg" alt="AI Steerability 360 logo" class="logo-light" />
 				<span class="links">
 					<a href="https://github.com/IBM/AISteer360" target="_blank" rel="noreferrer noopener"
 						>Repo</a
@@ -209,10 +226,9 @@
 				<h2>Events</h2>
 				<ol class="timeline">
 					<li>
-						<div class="marker" aria-hidden="true"></div>
+						<span class="kind">Lab</span>
 						<div class="when">Jan 21, 2026 &middot; AAAI 2026 &middot; Singapore</div>
 						<div class="what">
-							<span class="kind">Lab</span>:
 							<a href="/lab/">Learning to Steer Large Language Models</a>
 						</div>
 						<p>
@@ -221,19 +237,18 @@
 						</p>
 					</li>
 					<li>
-						<div class="marker" aria-hidden="true"></div>
+						<span class="kind">Systems demo</span>
 						<div class="when">Jul 7, 2026 &middot; ACL 2026 &middot; San Diego</div>
-						<div class="what"><span class="kind">Systems demo</span>: AI Steerability 360</div>
+						<div class="what">AI Steerability 360</div>
 						<p>
 							A system demonstration of the toolkit: building, composing, and benchmarking
 							steering methods across the four control surfaces.
 						</p>
 					</li>
 					<li class="upcoming">
-						<div class="marker" aria-hidden="true"></div>
+						<span class="kind">Competition</span>
 						<div class="when">Dec 6&ndash;12, 2026 &middot; NeurIPS 2026 &middot; Sydney</div>
 						<div class="what">
-							<span class="kind">Competition</span>:
 							<a href="/competition/">The Steerability Challenge</a>
 						</div>
 						<p>

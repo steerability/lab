@@ -46,6 +46,7 @@ jobs:
           cp -r landing/. _site/
           cp -r lab/dist _site/lab
           cp -r competition/. _site/competition/
+          cp -r shared/. _site/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
