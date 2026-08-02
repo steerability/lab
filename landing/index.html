@@ -11,6 +11,13 @@
 		<link rel="canonical" href="https://steerability.github.io/" />
 		<link rel="icon" href="/icon.svg" type="image/svg+xml" />
 
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@400;500&display=swap"
+			rel="stylesheet"
+		/>
+
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content="Steerability" />
 		<meta
@@ -19,14 +26,13 @@
 		/>
 		<meta property="og:url" content="https://steerability.github.io/" />
 
-		<!-- Theme: mirrors the lab/competition sites (shared localStorage key across the origin). -->
+		<!-- Theme: mirrors the lab/competition sites (shared localStorage key across the origin). Defaults to light. -->
 		<script>
 			(function () {
-				const lightModePref = window.matchMedia("(prefers-color-scheme: light)");
 				function getUserPref() {
 					const storedTheme =
 						typeof localStorage !== "undefined" && localStorage.getItem("theme");
-					return storedTheme || (lightModePref.matches ? "light" : "dark");
+					return storedTheme || "light";
 				}
 				function setTheme(newTheme) {
 					if (newTheme !== "light" && newTheme !== "dark") return;
@@ -34,7 +40,6 @@
 					if (typeof localStorage !== "undefined") localStorage.setItem("theme", newTheme);
 				}
 				setTheme(getUserPref());
-				lightModePref.addEventListener("change", (e) => setTheme(e.matches ? "light" : "dark"));
 			})();
 		</script>
 
@@ -80,8 +85,8 @@
 				background: var(--color-global-bg);
 				color: var(--color-global-text);
 				font-family:
-					ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-					"Courier New", monospace;
+					"Spline Sans Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+					"Liberation Mono", "Courier New", monospace;
 				font-size: 0.875rem; /* text-sm */
 				line-height: 1.25rem;
 				-webkit-font-smoothing: antialiased;
