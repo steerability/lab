@@ -147,7 +147,7 @@ pre .c{ color:#8A8C96; font-style:italic; }
 .site-header .container{ display:flex; align-items:center; justify-content:space-between; }
 .site-logo{ display:flex; padding:0; margin:0; text-decoration:none; }
 .site-logo:hover{ background:none; }
-.site-logo img{ display:block; }
+.site-logo img{ display:block; height:3.5rem; width:auto; }
 .site-nav{ display:flex; flex-wrap:wrap; gap:1.4rem; font-size:.95rem; }
 .site-nav a{ color:var(--soft); text-decoration:none; }
 .site-nav a:hover{ background:var(--ink); color:#fff; }

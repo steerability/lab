@@ -27,8 +27,8 @@
 <!-- ================= HEADER ================= -->
 <header class="site-header">
   <div class="container">
-    <a href="https://ibm.github.io/AISteer360/" class="site-logo" aria-label="Home">
-      <img src="/logo-light.svg" alt="The Steerability Challenge" width="40" height="40">
+    <a href="https://github.com/IBM/AISteer360" target="_blank" rel="noreferrer noopener" class="site-logo" aria-label="Repository">
+      <img src="/logo-light.svg" alt="The Steerability Challenge">
     </a>
     <nav class="site-nav" aria-label="Site">
       <a href="#task">The task</a>
@@ -57,13 +57,13 @@
       <div><dt>close</dt><dd>Nov 15, 2026 AoE</dd></div>
       <div><dt>platform</dt><dd>Steerability + CodaBench</dd></div>
       <div><dt>format</dt><dd>steering pipeline (<code>.spipe</code> file)</dd></div>
-      <div><dt>awards</dt><dd>cash prizes</dd></div>
+      <div><dt>awards</dt><dd>cash prizes (for 🥇🥈🥉 place)</dd></div>
     </dl>
   </div>
 
   <!-- ================= TASK ================= -->
   <h2 id="task">The task</h2>
-  <p>Sycophancy, i.e., a model's tendency to align with what the user appears to want to hear rather than with what is accurate, persists even in state-of-the-art models. Steering a model to be less sycophantic is challenging due to its tight coupling with other (desirable) behavioral traits. The task of the competition is to design a <em>steering policy</em> (an ordered composition of steering interventions) to maximally suppress a model's sycophantic behavior while maintaining its general capabilities. Visual interfaces (which we term <em>workbenches</em>) to assist in the construction of steering policies will be made available to participants in an effort to lower the barrier of entry.</p>
+  <p>Sycophancy, i.e., a model's tendency to align with what the user appears to want to hear rather than with what is accurate, persists even in state-of-the-art models. Steering a model to be less sycophantic is challenging due to its tight coupling with other (desirable) behavioral traits. The task of the competition is to design a <em>steering pipeline</em> (an ordered composition of steering interventions) to maximally suppress a model's sycophantic behavior while maintaining its general capabilities. Visual interfaces (which we term <em>workbenches</em>) to assist in the construction of steering policies will be made available to participants in an effort to lower the barrier of entry.</p>
 
   <p>Submissions will be scored based on a composite score of sycophancy reduction relative to the unsteered model minus the mean regression across side-effects (as measured by general capability benchmarks). Only regressions are penalized; incidental capability gains are permitted but will not be rewarded. The specific measures of sycophancy and general capabilities will be kept private to prevent gaming. Additionally, the splits used to maintain the leaderboard throughout the competition will be an intentionally small portion of the final evaluation split.</p>
 
@@ -72,7 +72,7 @@
   <!-- ================= RULES ================= -->
   <h2 id="rules">Rules</h2>
   <ol class="rules">
-    <li>One account per person (verified via institutional email if available + ORCID ID). Teams can consist of anywhere from single individuals up to five people. Teams may merge until the merger deadline of Sept. 15, after which the combined team inherits a single quota.</li>
+    <li>One account per person (verified via institutional email if available + ORCID ID). Teams can consist of anywhere from single individuals up to five people.</li>
     <li>Each team is limited to one scored submission in any rolling 24-hour window.</li>
     <li>Each team designates exactly one entry for final evaluation.</li>
     <li>All steering policies must be submitted in the toolkit's standardized <code>.spipe</code> format to enable uniform evaluation.</li>
@@ -91,7 +91,7 @@
     <dd>No, entry is free-of-charge.</dd>
 
     <dt>Which model will I be steering?</dt>
-    <dd>Given that we are scoring the performance of the steering policy, rather than the performance of a steered model, we will be running steering on a small set of models announced at competition launch.</dd>
+    <dd>Given that we are scoring the performance of the steering pipeline, rather than the performance of a steered model, we will be running steering on a small set of models announced at competition launch.</dd>
 
     <dt>Do I need to know how to code?</dt>
     <dd>No, visual interfaces (workbenches) will be made available to facilitate easier construction of steering policies.</dd>
