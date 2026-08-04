@@ -156,11 +156,19 @@
 			section {
 				margin-top: 3.25rem;
 			}
+			.intro {
+				margin-top: 0;
+			}
+			.intro p:first-child {
+				font-size: 1.35rem;
+				line-height: 1.5;
+				color: var(--ink);
+			}
 			h2 {
 				font-size: 1.25rem;
 				font-weight: 600;
 				line-height: 1.35;
-				margin: 3.25rem 0 0.8rem;
+				margin: 3.25rem 0 0.25rem;
 			}
 
 			/* Events timeline: reverse-chronological hard-shadow boxes on a
@@ -194,11 +202,13 @@
 			ol.timeline li.event:last-child {
 				margin-bottom: 0;
 			}
-			/* Dot on the rail, aligned to the box's first line. */
+			/* Dot centered on the rail, aligned to the box's first line.
+			   The box has a 1px border, so its padding box (the positioning
+			   origin) starts 1px inside the 2rem gutter; offset accounts for it. */
 			ol.timeline li.event::before {
 				content: "";
 				position: absolute;
-				left: calc(-2rem - 1px);
+				left: calc(4px - 2rem - 1px);
 				top: 1.35rem;
 				width: 0.5em;
 				height: 0.5em;
@@ -219,12 +229,12 @@
 			ol.timeline li.today::before {
 				content: "";
 				position: absolute;
-				left: calc(-2rem - 1px);
-				top: 0.15rem;
+				left: calc(5px - 2rem);
+				top: 50%;
 				width: 0.5em;
 				height: 0.5em;
 				background: var(--accent);
-				transform: translateX(-50%) rotate(45deg);
+				transform: translate(-50%, -50%) rotate(45deg);
 				animation: today-pulse 2.5s ease-out infinite;
 			}
 			@keyframes today-pulse {
@@ -268,7 +278,6 @@
 
 			footer {
 				margin-top: 4.5rem;
-				border-top: 1px solid var(--ink);
 				padding: 1.5rem 0 3rem;
 				font-size: 0.85rem;
 				color: var(--soft);
@@ -295,8 +304,24 @@
 				</span>
 			</div>
 
+			<section class="intro">
+				<p>
+					The <em>steerability</em> toolkit is an open source Python package for steering
+					large language models.
+				</p>
+				<p>
+					The toolkit enables the development and evaluation of a wide range of steering
+					methods through an expressive library of reusable components across four model
+					control surfaces (input, structural, state, and output). This allows for the
+					modular construction of novel steering methods, composition of steering methods
+					into steering pipelines, and benchmarking of pipelines on custom use cases and
+					metrics (including measurement of steering side effects). Check out
+					<a href="https://github.com/IBM/AISteer360">our repo</a> for more info.
+				</p>
+			</section>
+
 			<section>
-				<h2>Events</h2>
+				<h2>News</h2>
 				<ol class="timeline">
 					<li class="event upcoming">
 						<div class="when">Dec 6&ndash;12, 2026 &middot; NeurIPS 2026 &middot; Sydney</div>
