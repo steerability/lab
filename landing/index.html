@@ -132,6 +132,14 @@
 			html[data-theme="dark"] .logo-light {
 				display: none;
 			}
+
+			/* Dark mode support */
+			html[data-theme="dark"] {
+				--bg: #17181C;
+				--ink: #E4E4E8;
+				--soft: #A4A5AE;
+				--accent: #74D8FF;
+			}
 			.toolkit .links {
 				color: var(--soft);
 				display: flex;
@@ -159,67 +167,48 @@
 				line-height: 1.35;
 				margin: 3.25rem 0 0.8rem;
 			}
-			h2::before {
-				content: "";
-				display: inline-block;
-				width: 0.5em;
-				height: 0.5em;
-				background: var(--accent);
-				margin-right: 0.6rem;
-			}
 
-			/* Events timeline: stacked hard-shadow boxes */
+			/* Events timeline: with left-side timeline object */
 			ol.timeline {
 				list-style: none;
 				margin: 0 0 1.1rem;
 				padding: 0;
 			}
 			ol.timeline li {
-				background: #fff;
-				border: 1px solid var(--ink);
-				box-shadow: var(--lift) var(--lift) 0 var(--ink);
-				padding: 1.1rem 1.25rem;
-				margin: 1.75rem var(--lift) 2rem 0;
+				display: flex;
+				gap: 1.2rem;
+				margin: 1.75rem 0 2rem 0;
+				align-items: flex-start;
 			}
 			ol.timeline li:last-child {
 				margin-bottom: 0;
+			}
+			ol.timeline li::before {
+				content: "";
+				flex-shrink: 0;
+				width: 0.5em;
+				height: 0.5em;
+				margin-top: 0.62em;
+				border: 1.5px solid var(--ink);
+				background: var(--accent);
+				border-color: var(--accent);
+			}
+			ol.timeline li.upcoming::before {
+				background: transparent;
+				border-color: var(--ink);
+			}
+			ol.timeline li > div {
+				flex: 1;
 			}
 			.when {
 				color: var(--soft);
 				font-family: var(--font-mono);
 				font-size: 0.8rem;
 				letter-spacing: 0.02em;
-			}
-			.kind {
-				display: inline-flex;
-				align-items: center;
-				gap: 0.45em;
-				margin-bottom: 0.5rem;
-				color: var(--soft);
-				font-family: var(--font-mono);
-				font-size: 0.78rem;
-				font-weight: 400;
-				text-transform: uppercase;
-				letter-spacing: 0.05em;
-			}
-			.kind::before {
-				content: "";
-				width: 0.5em;
-				height: 0.5em;
-				flex-shrink: 0;
-				margin-top: 0.62em;
-				border: 1.5px solid var(--ink);
-			}
-			ol.timeline li.upcoming .kind::before {
-				background: transparent;
-				border-color: var(--ink);
-			}
-			ol.timeline li .kind::before {
-				background: var(--accent);
-				border-color: var(--accent);
+				margin-bottom: 0.3rem;
 			}
 			.what {
-				margin: 0.5rem 0;
+				margin: 0;
 				font-weight: 600;
 				color: var(--ink);
 			}
@@ -263,37 +252,42 @@
 			<section>
 				<h2>Events</h2>
 				<ol class="timeline">
-					<li>
-						<span class="kind">Lab</span>
-						<div class="when">Jan 21, 2026 &middot; AAAI 2026 &middot; Singapore</div>
-						<div class="what">
-							<a href="/lab/">Learning to Steer Large Language Models</a>
-						</div>
-						<p>
-							A hands-on lab on inspecting model behavior (via ICX360), designing steering
-							controls (via AISteer360), and validating the steered behavior.
-						</p>
-					</li>
-					<li>
-						<span class="kind">Systems demo</span>
-						<div class="when">Jul 7, 2026 &middot; ACL 2026 &middot; San Diego</div>
-						<div class="what">AI Steerability 360</div>
-						<p>
-							A system demonstration of the toolkit: building, composing, and benchmarking
-							steering methods across the four control surfaces.
-						</p>
-					</li>
 					<li class="upcoming">
-						<span class="kind">Competition</span>
-						<div class="when">Dec 6&ndash;12, 2026 &middot; NeurIPS 2026 &middot; Sydney</div>
-						<div class="what">
-							<a href="/competition/">The Steerability Challenge</a>
+						<div>
+							<div class="when">Dec 6&ndash;12, 2026 &middot; NeurIPS 2026 &middot; Sydney</div>
+							<div class="what">
+								<strong>Competition:</strong> <a href="/competition/">The Steerability Challenge</a>
+							</div>
+							<p>
+								Design steering pipelines that reduce sycophancy while preserving general
+								capabilities. Competition window August until October; workshop at
+								NeurIPS on Dec 11&ndash;12.
+							</p>
 						</div>
-						<p>
-							Design steering policies that reduce sycophancy while preserving general
-							capabilities. Competition window August until October; workshop at
-							NeurIPS on Dec 11&ndash;12.
-						</p>
+					</li>
+					<li>
+						<div>
+							<div class="when">Jul 7, 2026 &middot; ACL 2026 &middot; San Diego</div>
+							<div class="what">
+								<strong>Systems demo:</strong> AI Steerability 360
+							</div>
+							<p>
+								A system demonstration of the toolkit: building, composing, and benchmarking
+								steering methods across the four control surfaces.
+							</p>
+						</div>
+					</li>
+					<li>
+						<div>
+							<div class="when">Jan 21, 2026 &middot; AAAI 2026 &middot; Singapore</div>
+							<div class="what">
+								<strong>Lab:</strong> <a href="/lab/">Learning to Steer Large Language Models</a>
+							</div>
+							<p>
+								A hands-on lab on inspecting model behavior (via ICX360), designing steering
+								controls (via AISteer360), and validating the steered behavior.
+							</p>
+						</div>
 					</li>
 				</ol>
 			</section>
