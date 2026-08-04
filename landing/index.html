@@ -123,18 +123,6 @@
 				height: 3.5rem;
 				width: auto;
 			}
-			.logo-light {
-				display: block;
-			}
-			.logo-dark {
-				display: none;
-			}
-			html[data-theme="dark"] .logo-light {
-				display: none;
-			}
-			html[data-theme="dark"] .logo-dark {
-				display: block;
-			}
 			.toolkit .links {
 				color: var(--soft);
 				display: flex;
@@ -168,7 +156,7 @@
 				font-size: 1.25rem;
 				font-weight: 600;
 				line-height: 1.35;
-				margin: 3.25rem 0 0.25rem;
+				margin: 3.25rem 0 1.5rem;
 			}
 
 			/* Events timeline: reverse-chronological hard-shadow boxes on a
@@ -288,8 +276,7 @@
 		<main id="main">
 			<div class="toolkit">
 				<a href="https://github.com/IBM/AISteer360" target="_blank" rel="noreferrer noopener" aria-label="Repository">
-					<img src="/logo-light.svg" alt="AI Steerability 360 logo" class="logo-light" />
-					<img src="/logo-dark.svg" alt="AI Steerability 360 logo" class="logo-dark" />
+					<img src="/logo-light.svg" alt="AI Steerability 360 logo" />
 				</a>
 				<span class="links">
 					<a href="https://github.com/IBM/AISteer360" target="_blank" rel="noreferrer noopener"
@@ -324,9 +311,9 @@
 				<h2>News</h2>
 				<ol class="timeline">
 					<li class="event upcoming">
-						<div class="when">Dec 6&ndash;12, 2026 &middot; NeurIPS 2026 &middot; Sydney</div>
+						<div class="when">Dec 6&ndash;12, 2026 &middot; Sydney</div>
 						<div class="what">
-							<span class="prefix">Competition:</span>
+							<span class="prefix">NeurIPS 2026 Competition:</span>
 							<a href="/competition/">The Steerability Challenge</a>
 						</div>
 						<p>
@@ -339,9 +326,10 @@
 						<span class="today-label">Today &middot; Aug 4, 2026</span>
 					</li>
 					<li class="event">
-						<div class="when">Jul 7, 2026 &middot; ACL 2026 &middot; San Diego</div>
+						<div class="when">Jul 7, 2026 &middot; San Diego</div>
 						<div class="what">
-							<span class="prefix">Systems demo:</span> AI Steerability 360
+							<span class="prefix">ACL 2026</span>
+							<a href="https://aclanthology.org/2026.acl-demo.43/">Systems Demo</a>
 						</div>
 						<p>
 							A system demonstration of the toolkit: building, composing, and benchmarking
@@ -349,9 +337,9 @@
 						</p>
 					</li>
 					<li class="event">
-						<div class="when">Jan 21, 2026 &middot; AAAI 2026 &middot; Singapore</div>
+						<div class="when">Jan 21, 2026 &middot; Singapore</div>
 						<div class="what">
-							<span class="prefix">Lab:</span>
+							<span class="prefix">AAAI 2026 Lab:</span>
 							<a href="/lab/">Learning to Steer Large Language Models</a>
 						</div>
 						<p>
