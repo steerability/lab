@@ -123,22 +123,17 @@
 				height: 3.5rem;
 				width: auto;
 			}
+			.logo-light {
+				display: block;
+			}
 			.logo-dark {
 				display: none;
-			}
-			html[data-theme="dark"] .logo-dark {
-				display: block;
 			}
 			html[data-theme="dark"] .logo-light {
 				display: none;
 			}
-
-			/* Dark mode support */
-			html[data-theme="dark"] {
-				--bg: #17181C;
-				--ink: #E4E4E8;
-				--soft: #A4A5AE;
-				--accent: #74D8FF;
+			html[data-theme="dark"] .logo-dark {
+				display: block;
 			}
 			.toolkit .links {
 				color: var(--soft);
@@ -168,49 +163,100 @@
 				margin: 3.25rem 0 0.8rem;
 			}
 
-			/* Events timeline: with left-side timeline object */
+			/* Events timeline: reverse-chronological hard-shadow boxes on a
+			   left-hand rail (dots + pulsing "today" marker). */
 			ol.timeline {
+				position: relative;
 				list-style: none;
 				margin: 0 0 1.1rem;
-				padding: 0;
+				padding: 0 0 0 2rem;
 			}
-			ol.timeline li {
-				display: flex;
-				gap: 1.2rem;
-				margin: 1.75rem 0 2rem 0;
-				align-items: flex-start;
+			/* The vertical rail. */
+			ol.timeline::before {
+				content: "";
+				position: absolute;
+				left: 4px;
+				top: 1.6rem;
+				bottom: 1.6rem;
+				width: 1px;
+				background: var(--line);
 			}
-			ol.timeline li:last-child {
+
+			/* Event boxes retain the hard-shadow style. */
+			ol.timeline li.event {
+				position: relative;
+				background: #fff;
+				border: 1px solid var(--ink);
+				box-shadow: var(--lift) var(--lift) 0 var(--ink);
+				padding: 1.1rem 1.25rem;
+				margin: 0 var(--lift) 2rem 0;
+			}
+			ol.timeline li.event:last-child {
 				margin-bottom: 0;
 			}
-			ol.timeline li::before {
+			/* Dot on the rail, aligned to the box's first line. */
+			ol.timeline li.event::before {
 				content: "";
-				flex-shrink: 0;
+				position: absolute;
+				left: calc(-2rem - 1px);
+				top: 1.35rem;
 				width: 0.5em;
 				height: 0.5em;
-				margin-top: 0.62em;
-				border: 1.5px solid var(--ink);
 				background: var(--accent);
-				border-color: var(--accent);
+				border: 1.5px solid var(--accent);
+				transform: translateX(-50%);
 			}
-			ol.timeline li.upcoming::before {
-				background: transparent;
+			ol.timeline li.event.upcoming::before {
+				background: var(--bg);
 				border-color: var(--ink);
 			}
-			ol.timeline li > div {
-				flex: 1;
+
+			/* "Today" marker: a pulsing diamond on the rail, no box. */
+			ol.timeline li.today {
+				position: relative;
+				margin: 0 0 2rem 0;
 			}
+			ol.timeline li.today::before {
+				content: "";
+				position: absolute;
+				left: calc(-2rem - 1px);
+				top: 0.15rem;
+				width: 0.5em;
+				height: 0.5em;
+				background: var(--accent);
+				transform: translateX(-50%) rotate(45deg);
+				animation: today-pulse 2.5s ease-out infinite;
+			}
+			@keyframes today-pulse {
+				0% {
+					box-shadow: 0 0 0 0 rgba(31, 59, 211, 0.35);
+				}
+				70%,
+				100% {
+					box-shadow: 0 0 0 7px rgba(31, 59, 211, 0);
+				}
+			}
+			.today-label {
+				color: var(--soft);
+				font-family: var(--font-mono);
+				font-size: 0.8rem;
+				font-weight: 500;
+				letter-spacing: 0.02em;
+			}
+
 			.when {
 				color: var(--soft);
 				font-family: var(--font-mono);
 				font-size: 0.8rem;
 				letter-spacing: 0.02em;
-				margin-bottom: 0.3rem;
 			}
 			.what {
-				margin: 0;
+				margin: 0.5rem 0 0;
 				font-weight: 600;
 				color: var(--ink);
+			}
+			.what .prefix {
+				color: var(--accent);
 			}
 			ol.timeline a {
 				color: var(--accent);
@@ -233,8 +279,8 @@
 		<main id="main">
 			<div class="toolkit">
 				<a href="https://github.com/IBM/AISteer360" target="_blank" rel="noreferrer noopener" aria-label="Repository">
-					<img src="/logo-dark.svg" alt="AI Steerability 360 logo" class="logo-dark" />
 					<img src="/logo-light.svg" alt="AI Steerability 360 logo" class="logo-light" />
+					<img src="/logo-dark.svg" alt="AI Steerability 360 logo" class="logo-dark" />
 				</a>
 				<span class="links">
 					<a href="https://github.com/IBM/AISteer360" target="_blank" rel="noreferrer noopener"
@@ -252,42 +298,41 @@
 			<section>
 				<h2>Events</h2>
 				<ol class="timeline">
-					<li class="upcoming">
-						<div>
-							<div class="when">Dec 6&ndash;12, 2026 &middot; NeurIPS 2026 &middot; Sydney</div>
-							<div class="what">
-								<strong>Competition:</strong> <a href="/competition/">The Steerability Challenge</a>
-							</div>
-							<p>
-								Design steering pipelines that reduce sycophancy while preserving general
-								capabilities. Competition window August until October; workshop at
-								NeurIPS on Dec 11&ndash;12.
-							</p>
+					<li class="event upcoming">
+						<div class="when">Dec 6&ndash;12, 2026 &middot; NeurIPS 2026 &middot; Sydney</div>
+						<div class="what">
+							<span class="prefix">Competition:</span>
+							<a href="/competition/">The Steerability Challenge</a>
 						</div>
+						<p>
+							Design steering policies that reduce sycophancy while preserving general
+							capabilities. Competition window August until October; workshop at
+							NeurIPS on Dec 11&ndash;12.
+						</p>
 					</li>
-					<li>
-						<div>
-							<div class="when">Jul 7, 2026 &middot; ACL 2026 &middot; San Diego</div>
-							<div class="what">
-								<strong>Systems demo:</strong> AI Steerability 360
-							</div>
-							<p>
-								A system demonstration of the toolkit: building, composing, and benchmarking
-								steering methods across the four control surfaces.
-							</p>
-						</div>
+					<li class="today">
+						<span class="today-label">Today &middot; Aug 4, 2026</span>
 					</li>
-					<li>
-						<div>
-							<div class="when">Jan 21, 2026 &middot; AAAI 2026 &middot; Singapore</div>
-							<div class="what">
-								<strong>Lab:</strong> <a href="/lab/">Learning to Steer Large Language Models</a>
-							</div>
-							<p>
-								A hands-on lab on inspecting model behavior (via ICX360), designing steering
-								controls (via AISteer360), and validating the steered behavior.
-							</p>
+					<li class="event">
+						<div class="when">Jul 7, 2026 &middot; ACL 2026 &middot; San Diego</div>
+						<div class="what">
+							<span class="prefix">Systems demo:</span> AI Steerability 360
 						</div>
+						<p>
+							A system demonstration of the toolkit: building, composing, and benchmarking
+							steering methods across the four control surfaces.
+						</p>
+					</li>
+					<li class="event">
+						<div class="when">Jan 21, 2026 &middot; AAAI 2026 &middot; Singapore</div>
+						<div class="what">
+							<span class="prefix">Lab:</span>
+							<a href="/lab/">Learning to Steer Large Language Models</a>
+						</div>
+						<p>
+							A hands-on lab on inspecting model behavior (via ICX360), designing steering
+							controls (via AISteer360), and validating the steered behavior.
+						</p>
 					</li>
 				</ol>
 			</section>
