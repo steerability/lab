@@ -151,7 +151,7 @@ ol.timeline::before {
 ol.timeline::after {
 	content: "";
 	position: absolute;
-	left: 4px;
+	left: 5px;
 	bottom: -3px;
 	width: 0.5rem;
 	height: 0.5rem;
