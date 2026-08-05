@@ -96,7 +96,7 @@
 						</p>
 					</li>
 					<li class="today">
-						<span class="today-label">Today &middot; Aug 4, 2026</span>
+						<span class="today-label" id="today-date">Today &middot; Aug 5, 2026</span>
 					</li>
 					<li class="event">
 						<div class="when">Jul 7, 2026 &middot; San Diego</div>
@@ -125,5 +125,11 @@
 		</main>
 
 		<footer></footer>
+		<script>
+			const today = new Date();
+			const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+			const dateStr = `${months[today.getMonth()]} ${today.getDate()}, ${today.getFullYear()}`;
+			document.getElementById('today-date').textContent = `Today · ${dateStr}`;
+		</script>
 	</body>
 </html>

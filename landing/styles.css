@@ -147,15 +147,16 @@ ol.timeline::before {
 	width: 1px;
 	background: var(--line);
 }
-/* Terminal stopper: a short horizontal tick where the rail ends. */
+/* Terminal stopper: a small circle where the rail ends. */
 ol.timeline::after {
 	content: "";
 	position: absolute;
 	left: 4px;
-	bottom: 0;
-	width: 1rem;
-	height: 2px;
-	background: var(--ink);
+	bottom: -3px;
+	width: 0.5rem;
+	height: 0.5rem;
+	background: var(--line);
+	border-radius: 50%;
 	transform: translateX(-50%);
 }
 
