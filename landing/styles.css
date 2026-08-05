@@ -81,14 +81,17 @@ p {
 	color: var(--soft);
 	display: flex;
 	flex-wrap: wrap;
-	gap: 1.4rem;
-	font-size: 0.95rem;
+	align-items: center;
+	gap: 1rem;
+	font-size: 1.35rem;
 }
 .toolkit .links a {
+	display: flex;
 	color: var(--soft);
 	text-decoration: none;
-	padding: 0;
+	padding: 0.35rem;
 	margin: 0;
+	border-radius: 2px;
 }
 .toolkit .links a:hover {
 	background: var(--ink);
@@ -128,22 +131,35 @@ h2 {
 }
 
 /* Events timeline: reverse-chronological hard-shadow boxes on a
-   left-hand rail (dots + pulsing "today" marker). */
+   left-hand rail (dots + pulsing "today" marker). The rail starts at
+   the first event and runs past the last one into a short tail, capped
+   by a terminal stopper (::after). */
 ol.timeline {
 	position: relative;
 	list-style: none;
 	margin: 0 0 1.1rem;
-	padding: 0 0 0 2rem;
+	padding: 0 0 4rem 2rem;
 }
-/* The vertical rail. */
+/* The vertical rail: from the first event down through the tail. */
 ol.timeline::before {
 	content: "";
 	position: absolute;
 	left: 4px;
 	top: 1.6rem;
-	bottom: 1.6rem;
+	bottom: 0;
 	width: 1px;
 	background: var(--line);
+}
+/* Terminal stopper: a short horizontal tick where the rail ends. */
+ol.timeline::after {
+	content: "";
+	position: absolute;
+	left: 4px;
+	bottom: 0;
+	width: 0.7rem;
+	height: 1px;
+	background: var(--line);
+	transform: translateX(-50%);
 }
 
 /* Event boxes retain the hard-shadow style. */
