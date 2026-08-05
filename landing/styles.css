@@ -106,6 +106,7 @@ p {
 }
 .wordmark em {
 	font-style: italic;
+	color: var(--accent);
 }
 
 section {
