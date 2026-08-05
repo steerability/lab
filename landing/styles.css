@@ -153,9 +153,9 @@ ol.timeline::after {
 	position: absolute;
 	left: 4px;
 	bottom: 0;
-	width: 0.7rem;
-	height: 1px;
-	background: var(--line);
+	width: 1rem;
+	height: 2px;
+	background: var(--ink);
 	transform: translateX(-50%);
 }
 
