@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Steerability Challenge</title>
-<meta name="description" content="An open competition in steering large language models to reduce model sycophancy while preserving general capabilities. Opens August 29, 2026.">
+<meta name="description" content="An open competition in steering large language models to reduce model dishonesty while preserving general capabilities. Opens August 29, 2026.">
 <link rel="icon" href="/shared/favicon.png" type="image/png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,7 +45,7 @@
   <!-- ================= INTRO ================= -->
   <h1>The Steerability Challenge</h1>
   <br />
-  <p><em>The steerability challenge</em> is an open competition in steering large language models toward a specific target behavior while minimizing off-target effects. Specifically, the focus is to reduce model <em><a href="https://arxiv.org/abs/2411.15287">sycophancy</a></em> while maintaining the model's general capabilities. Competition entries take the form of steering interventions, which in general can be any combination of control over the model's input/prompt, structure/weights, state/activations, and output/decoding procedure. Participants will build and evaluate their interventions with the <a href="https://github.com/IBM/AISteer360">steerability toolkit</a>.</p>
+  <p><em>The steerability challenge</em> is an open competition in steering large language models toward a specific target behavior while minimizing off-target effects. Specifically, the focus is to reduce model <em>dishonesty</em> while maintaining the model's general capabilities. Competition entries take the form of steering interventions, which in general can be any combination of control over the model's input/prompt, structure/weights, state/activations, and output/decoding procedure. Participants will build and evaluate their interventions with the <a href="https://github.com/IBM/AISteer360">steerability toolkit</a>.</p>
 
   <div class="cta-row">
     <span class="btn btn-disabled" data-tooltip="Check back at launch!">Register</span>
@@ -64,12 +64,11 @@
 
   <!-- ================= TASK ================= -->
   <h2 id="task">The task</h2>
-  <p>Sycophancy, i.e., a model's tendency to align with what the user appears to want to hear rather than with what is accurate, persists even in state-of-the-art models. Steering a model to be less sycophantic is challenging due to its tight coupling with other (desirable) behavioral traits. The task of the competition is to design a <em>steering pipeline</em> (an ordered composition of steering interventions) to maximally suppress a model's sycophantic behavior while maintaining its general capabilities. Visual interfaces (which we term <em>workbenches</em>) to assist in the construction of steering pipelines will be made available to participants in an effort to lower the barrier of entry.</p>
+  <p>Dishonesty, i.e., a model's tendency to make assertions that diverge from what it internally represents as true, persists even in state-of-the-art models. Steering a model to be more honest is challenging due to the tight coupling of dishonesty with other (desirable) behavioral traits. The task of the competition is to design a <em>steering pipeline</em> (an ordered composition of steering interventions) to maximally suppress a model's dishonest behavior while maintaining its general capabilities. Visual interfaces (which we term <em>workbenches</em>) to assist in the construction of steering pipelines will be made available to participants in an effort to lower the barrier of entry.</p>
 
-  <p>Submissions will be scored based on a composite score of sycophancy reduction relative to the unsteered model minus the mean regression across side-effects (as measured by general capability benchmarks). Only regressions are penalized; incidental capability gains are permitted but will not be rewarded. The specific measures of sycophancy and general capabilities will be kept private to prevent gaming. Additionally, the splits used to maintain the leaderboard throughout the competition will be an intentionally small portion of the final evaluation split.</p>
+  <p>Submissions will be scored based on a composite score of dishonesty reduction relative to the unsteered model minus the mean regression across side-effects (as measured by general capability benchmarks). Only regressions are penalized; incidental capability gains are permitted but will not be rewarded. The specific measures of dishonesty and general capabilities will be kept private to prevent gaming. Additionally, the splits used to maintain the leaderboard throughout the competition will be an intentionally small portion of the final evaluation split.</p>
 
-  <p>Upon competition launch, a collection of baseline steering pipelines will be provided. A starter kit to help participants get started will also be made available. Winning teams will be awarded with a cash prize and will be invited to present at the competition workshop at NeurIPS 2026. Select teams will also be given the opportunity for their pipelines to be incorporated into the toolkit as community-contributed examples for sycophancy reduction.</p>
-
+  <p>Upon competition launch, a collection of baseline steering pipelines will be provided. A starter kit to help participants get started will also be made available. Winning teams will be awarded with a cash prize and will be invited to present at the competition workshop at NeurIPS 2026. Select teams will also be given the opportunity for their pipelines to be incorporated into the toolkit as community-contributed examples for dishonesty reduction.</p>
   <!-- ================= RULES ================= -->
   <h2 id="rules">Rules</h2>
   <ol class="rules">
