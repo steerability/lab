@@ -45,7 +45,7 @@
   <!-- ================= INTRO ================= -->
   <h1>The Steerability Challenge</h1>
   <br />
-  <p><em>The steerability challenge</em> is an open competition in steering large language models toward a specific target behavior while minimizing off-target effects. Specifically, the focus is to reduce model <em>dishonesty</em> while maintaining the model's general capabilities. Competition entries take the form of steering interventions, which in general can be any combination of control over the model's input/prompt, structure/weights, state/activations, and output/decoding procedure. Participants will build and evaluate their interventions with the <a href="https://github.com/IBM/AISteer360">steerability toolkit</a>.</p>
+  <p><em>The steerability challenge</em> is an open competition in steering large language models toward decreased <em>dishonesty</em> while maintaining general capabilities. Competition entries take the form of steering interventions, which in general can be any combination of control over the model's input/prompt, structure/weights, state/activations, and output/decoding procedure. Participants will build and evaluate their interventions with the <a href="https://github.com/IBM/AISteer360">steerability toolkit</a>.</p>
 
   <div class="cta-row">
     <span class="btn btn-disabled" data-tooltip="Check back at launch!">Register</span>
@@ -66,18 +66,18 @@
   <h2 id="task">The task</h2>
   <p>Dishonesty, i.e., a model's tendency to make assertions that diverge from what it internally represents as true, persists even in state-of-the-art models. Steering a model to be more honest is challenging due to the tight coupling of dishonesty with other (desirable) behavioral traits. The task of the competition is to design a <em>steering pipeline</em> (an ordered composition of steering interventions) to maximally suppress a model's dishonest behavior while maintaining its general capabilities.</p>
 
-  <p>Submissions will be scored based on a composite score of dishonesty reduction relative to the unsteered model minus the mean regression across side-effects (as measured by general capability benchmarks). Only regressions are penalized; incidental capability gains are permitted but will not be rewarded. The specific measures of dishonesty and general capabilities will be kept private to prevent gaming. Additionally, the splits used to maintain the leaderboard throughout the competition will be an intentionally small portion of the final evaluation split.</p>
+  <p>Submissions will be scored based on a composite score of dishonesty reduction relative to the unsteered model minus the mean regression across side-effects (as measured by general capability benchmarks). Only regressions are penalized; incidental capability gains are permitted but will not be rewarded. The specific measures of dishonesty and general capabilities will be kept private to prevent gaming.</p>
 
-  <p>Upon competition launch, a collection of baseline steering pipelines will be provided. A starter kit to help participants get started will also be made available. Winning teams will be awarded with a cash prize and will be invited to present at the competition workshop at NeurIPS 2026. Select teams will also be given the opportunity for their pipelines to be incorporated into the toolkit as community-contributed examples for dishonesty reduction.</p>
+  <p>A collection of baseline steering pipelines will be provided at competition launch. A starter kit to help participants familiarize themselves with the code will also be made available. Winning teams will be awarded with a cash prize and will be invited to present at the competition workshop at NeurIPS 2026. Select teams will also be given the opportunity for their pipelines to be incorporated into the toolkit as community-contributed examples for dishonesty reduction.</p>
   <!-- ================= RULES ================= -->
   <h2 id="rules">Rules</h2>
   <ol class="rules">
     <li>One account per person (verified via institutional email if available + ORCID ID). Teams can consist of anywhere from single individuals up to five people.</li>
-    <li>Each team is limited to one scored submission in any rolling 24-hour window.</li>
-    <li>Each team designates exactly one entry for final evaluation.</li>
+    <li>Teams are allowed unlimited submissions but must mark one submission to be graded each week.</li>
+    <li>Prior to competition close, each team designates exactly one entry for final evaluation.</li>
     <li>All steering policies must be submitted in the toolkit's standardized <code>.spipe</code> format to enable uniform evaluation.</li>
     <li>External datasets and pretrained artifacts (steering vectors, adapters) are welcome if they are participant-created or freely accessible, with documentation and provenance disclosed upon request.</li>
-    <li>Prize recipients must be able to supply full reproduction materials within 14 days of final submission. Additionally, at least one member of each winning team must be able to physically attend and present at the competition workshop.</li>
+    <li>Prize recipients must be able to supply full reproduction materials within one week of the competition deadline. Additionally, at least one member of each winning team must be able to physically attend and present at the competition workshop at NeurIPS 2026 in Paris.</li>
     <li>Participants who wish to have their submission added to the core toolkit repo must agree to license their work under Apache 2.0.</li>
   </ol>
 
@@ -99,7 +99,7 @@
     <dt>Do I need to know how to code?</dt>
     <dd>No, visual interfaces (workbenches) will be made available to facilitate easier construction of steering policies.</dd>
 
-    <dt>How is the leaderboard kept honest?</dt>
+    <dt>How are leaderboard computed?</dt>
     <dd>The public leaderboard runs on a downsampled subset of the evaluation; final rankings use the full private suite, including held-out steering tasks. Winners are re-run end to end and code-reviewed.</dd>
 
     <dt>What happens to submissions afterwards?</dt>
